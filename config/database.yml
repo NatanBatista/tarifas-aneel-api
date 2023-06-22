@@ -1,11 +1,6 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: <%= ENV["DATABASE_USERNAME"] %>
-  password: <%= ENV["DATABASE_PASSWORD"] %>
-  host: <%= ENV["DATABASE_HOST"] %>
-  port: <%= ENV["DATABASE_PORT"] %>
-  schema_search_path: <%= ENV["DATABASE_SCHEMA"] %>
 
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
@@ -13,16 +8,24 @@ default: &default
 
 development:
   <<: *default
-  database: <%= ENV["DATABASE_DB"] %>
+  database: <%= ENV["DATABASE_DB_D"] %>
+  username: <%= ENV["DATABASE_USERNAME_D"] %>
+  password: <%= ENV["DATABASE_PASSWORD_D"] %>
+  host: <%= ENV["DATABASE_HOST_D"] %>
+  port: <%= ENV["DATABASE_PORT_D"] %>
+  schema_search_path: <%= ENV["DATABASE_SCHEMA_D"] %>
   
   
 test:
   <<: *default
-  database: tarifas_aneel_api_test
+
 
 
 production:
   <<: *default
-  database: tarifas_aneel_api_production
-  username: tarifas_aneel_api
-  password: <%= ENV['TARIFAS_ANEEL_API_DATABASE_PASSWORD'] %>
+  database: <%= ENV["DATABASE_DB"] %>
+  username: <%= ENV["DATABASE_USERNAME"] %>
+  password: <%= ENV["DATABASE_PASSWORD"] %>
+  host: <%= ENV["DATABASE_HOST"] %>
+  port: <%= ENV["DATABASE_PORT"] %>
+  schema_search_path: <%= ENV["DATABASE_SCHEMA"] %>
