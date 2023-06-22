@@ -13,7 +13,7 @@ default: &default
 
 development:
   <<: *default
-  database: dbWeb
+  database: <%= ENV["DATABASE_DB"] %>
   
   
 test:
