@@ -17,14 +17,14 @@ class Tarifa < ApplicationRecord
   scope :valorTarifaporDistribuidora, -> (offset_value = 0){
     select("NumCNPJDistribuidora, vlrtusd")
       .group("numcnpjdistribuidora, vlrtusd")
-      .order("vlrtusd")
+      .order("vlrtusd DESC")
       .limit(100)
-      .offset(offset_value)
+      .offset(offset_value) ## 5 questão
   }
 
   scope :numTarifasPorPosto, -> {
     select("NomPostoTarifario, COUNT(idTarifas)")
-      .group("NomPostoTarifario")
+      .group("NomPostoTarifario") ## 6 questão
   }
 
 end
