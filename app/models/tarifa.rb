@@ -4,4 +4,7 @@ class Tarifa < ApplicationRecord
     .where("datiniciovigencia >= ? AND datfimvigencia <= ?", inicio, fim)
   }
 
+  scope :descclasse, -> {
+    select('distinct dscclasse')
+  }
 end

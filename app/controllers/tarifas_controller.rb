@@ -12,4 +12,10 @@ class TarifasController < ApplicationController
 
     render json: @data_vigencia
   end
+
+  def get_descclasse
+    @classe = Tarifa.descclasse
+
+    render json: @classe
+  end
 end
