@@ -1,0 +1,2 @@
+class ModalidadeTarifaria < ApplicationRecord
+end
