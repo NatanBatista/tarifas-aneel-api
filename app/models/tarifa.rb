@@ -13,4 +13,13 @@ class Tarifa < ApplicationRecord
       .joins("JOIN modalidade_tarifaria mt ON mt.idModalidade_Tarifaria = DscModalidadeTarifaria")
       .group("DatGeracaoConjuntoDados, DscModalidadeTarifaria")
   }
+
+  scope :valorTarifaporDistribuidora, -> (offset_value = 0){
+    select("NumCNPJDistribuidora, vlrtusd")
+      .group("numcnpjdistribuidora, vlrtusd")
+      .order("vlrtusd")
+      .limit(100)
+      .offset(offset_value)
+  }
+
 end

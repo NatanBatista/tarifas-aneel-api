@@ -24,4 +24,11 @@ class TarifasController < ApplicationController
 
     render json: @agredado_modalidade_data
   end
+
+  def get_valorTarifaporDistribuidora
+    offset_value = params[:offset].to_i
+    @valorTarifaporDistribuidora = Tarifa.valorTarifaporDistribuidora(offset_value)
+
+    render json: @valorTarifaporDistribuidora
+  end
 end
