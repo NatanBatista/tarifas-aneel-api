@@ -22,4 +22,9 @@ class Tarifa < ApplicationRecord
       .offset(offset_value)
   }
 
+  scope :numTarifasPorPosto, -> {
+    select("NomPostoTarifario, COUNT(idTarifas)")
+      .group("NomPostoTarifario")
+  }
+
 end

@@ -31,4 +31,10 @@ class TarifasController < ApplicationController
 
     render json: @valorTarifaporDistribuidora
   end
+
+  def get_numTarifasPorPosto
+    @numTarifasPorPosto = Tarifa.numTarifasPorPosto
+
+    render json: @numTarifasPorPosto
+  end
 end
