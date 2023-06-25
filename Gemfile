@@ -9,6 +9,7 @@ gem 'pg', '~> 1.1'
 
 gem 'puma', '~> 5.0'
 
+gem 'rack-cors', :require => 'rack/cors'
 
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'dotenv-rails', require: 'dotenv/rails-now'
