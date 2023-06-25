@@ -7,4 +7,10 @@ class Tarifa < ApplicationRecord
   scope :descclasse, -> {
     select('distinct dscclasse')
   }
+
+  scope :agregado_por_modalidade, -> {
+    select("DatGeracaoConjuntoDados, DscModalidadeTarifaria, COUNT(*) AS quantidade_registros")
+      .joins("JOIN modalidade_tarifaria mt ON mt.idModalidade_Tarifaria = DscModalidadeTarifaria")
+      .group("DatGeracaoConjuntoDados, DscModalidadeTarifaria")
+  }
 end

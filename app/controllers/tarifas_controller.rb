@@ -18,4 +18,10 @@ class TarifasController < ApplicationController
 
     render json: @classe
   end
+
+  def get_agregado_por_modalidade
+    @agredado_modalidade_data = Tarifa.agregado_por_modalidade
+
+    render json: @agredado_modalidade_data
+  end
 end
