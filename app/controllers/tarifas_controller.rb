@@ -44,4 +44,10 @@ class TarifasController < ApplicationController
 
     render json: @resolucoes
   end
+
+  def get_agentes_e_tarifas
+    @agentes = Tarifa.agentes_e_tarifas
+
+    render json: @agentes
+  end
 end

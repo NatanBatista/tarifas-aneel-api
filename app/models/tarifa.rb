@@ -34,4 +34,9 @@ class Tarifa < ApplicationRecord
       .offset(offset_value)
   }
 
+  scope :agentes_e_tarifas, -> {
+    select("SigAgente, COUNT(*) AS QuantidadeTarifas")
+      .group("SigAgente")
+      .order("QuantidadeTarifas DESC")
+  }
 end
