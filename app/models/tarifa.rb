@@ -5,26 +5,33 @@ class Tarifa < ApplicationRecord
   }
 
   scope :descclasse, -> {
-    select('distinct dscclasse')
+    select('distinct dscclasse') ## 3º Questão
   }
 
-  scope :agregado_por_modalidade, -> {
+  scope :agregado_por_modalidade, -> { ## 4º Questão
     select("DatGeracaoConjuntoDados, DscModalidadeTarifaria, COUNT(*) AS quantidade_registros")
       .joins("JOIN modalidade_tarifaria mt ON mt.idModalidade_Tarifaria = DscModalidadeTarifaria")
       .group("DatGeracaoConjuntoDados, DscModalidadeTarifaria")
   }
 
-  scope :valorTarifaporDistribuidora, -> (offset_value = 0){
+  scope :valorTarifaporDistribuidora, -> (offset_value = 0){ ## 5º Questão
     select("NumCNPJDistribuidora, vlrtusd")
       .group("numcnpjdistribuidora, vlrtusd")
       .order("vlrtusd DESC")
       .limit(100)
-      .offset(offset_value) ## 5 questão
+      .offset(offset_value)
   }
 
-  scope :numTarifasPorPosto, -> {
+  scope :numTarifasPorPosto, -> {  ## 6º questão
     select("NomPostoTarifario, COUNT(idTarifas)")
-      .group("NomPostoTarifario") ## 6 questão
+      .group("NomPostoTarifario")
+  }
+
+  scope :resolucoes, -> (offset_value = 0) {
+    select("DISTINCT DscResolucaoHomologatoria")
+      .order("DscResolucaoHomologatoria")
+      .limit(100)
+      .offset(offset_value)
   }
 
 end

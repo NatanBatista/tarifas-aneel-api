@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       get 'modalidadesregistro', to: 'tarifas#get_agregado_por_modalidade'
       get 'valortarifapordistribuidora', to: 'tarifas#get_valorTarifaporDistribuidora'
       get 'numtarifasporposto', to: 'tarifas#get_numTarifasPorPosto'
+      get 'resolucoes', to: 'tarifas#get_resolucao'
     end
   end
   resources :subgrupos_tarifarios, only: [:index], path: "subgrupos"
