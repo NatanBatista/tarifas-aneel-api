@@ -11,5 +11,6 @@ Rails.application.routes.draw do
       get 'numtarifasporposto', to: 'tarifas#get_numTarifasPorPosto'
     end
   end
+  resources :subgrupos_tarifarios, only: [:index], path: "subgrupos"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

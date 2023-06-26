@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_21_024528) do
+ActiveRecord::Schema.define(version: 2023_06_26_024521) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,11 @@ ActiveRecord::Schema.define(version: 2023_06_21_024528) do
   end
 
   create_table "modalidade_tarifaria", primary_key: "idmodalidade_tarifaria", id: { type: :string, limit: 40 }, force: :cascade do |t|
+  end
+
+  create_table "subgrupo_tarifarios", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "subgrupos_tarifarios", primary_key: "idsubgrupos_tarifarios", id: { type: :string, limit: 15 }, force: :cascade do |t|

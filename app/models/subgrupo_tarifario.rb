@@ -1,0 +1,2 @@
+class SubgrupoTarifario < ApplicationRecord
+end
