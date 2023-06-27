@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       get 'modalidadesregistro', to: 'tarifas#get_agregado_por_modalidade'
       get 'valortarifapordistribuidora', to: 'tarifas#get_valorTarifaporDistribuidora'
       get 'numtarifasporposto', to: 'tarifas#get_numTarifasPorPosto'
+      get 'unidadesconsumidoras', to: 'tarifas#get_unidadesConsumidoras'
       get 'resolucoes', to: 'tarifas#get_resolucao'
       get 'agentestarifas', to: 'tarifas#get_agentes_e_tarifas'
     end

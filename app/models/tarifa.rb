@@ -27,14 +27,24 @@ class Tarifa < ApplicationRecord
       .group("NomPostoTarifario")
   }
 
-  scope :resolucoes, -> (offset_value = 0) {
+  scope :unidadesConsumidoras, -> {
+    select("dscclasse, dscsubClasse, SUM(CAST(REPLACE(VlrTe, ',', '.') AS DECIMAL(16,2))) AS TotalConsumo")
+      .where("DatFimVigencia IS NOT NULL
+              AND DatFimVigencia >= (DATE_TRUNC('month', CURRENT_DATE) - INTERVAL '6 months')::DATE
+              AND DatFimVigencia <= DATE_TRUNC('month', CURRENT_DATE)::DATE")
+      .group("dscclasse, dscsubclasse")
+      .order("TotalConsumo DESC")
+      .limit(10)
+  }
+
+  scope :resolucoes, -> (offset_value = 0) { ## 9º Questão
     select("DISTINCT DscResolucaoHomologatoria")
       .order("DscResolucaoHomologatoria")
       .limit(100)
       .offset(offset_value)
   }
 
-  scope :agentes_e_tarifas, -> {
+  scope :agentes_e_tarifas, -> {  ## 10º Questão
     select("SigAgente, COUNT(*) AS QuantidadeTarifas")
       .group("SigAgente")
       .order("QuantidadeTarifas DESC")

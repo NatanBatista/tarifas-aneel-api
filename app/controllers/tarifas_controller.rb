@@ -38,6 +38,12 @@ class TarifasController < ApplicationController
     render json: @numTarifasPorPosto
   end
 
+  def get_unidadesConsumidoras
+    @unidadesConsumidoras = Tarifa.unidadesConsumidoras
+
+    render json: @unidadesConsumidoras
+  end
+
   def get_resolucao
     offset_value = params[:offset].to_i
     @resolucoes = Tarifa.resolucoes(offset_value)
