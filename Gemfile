@@ -22,6 +22,7 @@ end
 group :development do
   gem 'listen', '~> 3.3'
   gem 'spring'
+  gem "letter_opener", "~> 1.8"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -29,5 +30,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "dockerfile-rails", ">= 1.5", :group => :development
 
-gem "devise", "~> 4.9"
-gem "devise-jwt", "~> 0.11.0"
+gem "devise_token_auth", "~> 1.2"
+
