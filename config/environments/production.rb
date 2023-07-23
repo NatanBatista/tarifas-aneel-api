@@ -112,7 +112,7 @@ Rails.application.configure do
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
   config.action_mailer.default_url_options = {
-    host: 'https://main.d2eabbnfag3653.amplifyapp.com/login'
+    host: 'https://tarifas-api.onrender.com/auth/sign_in'
   }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
