@@ -110,4 +110,18 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
+
+  config.action_mailer.default_url_options = {
+    host: 'https://main.d2eabbnfag3653.amplifyapp.com/login'
+  }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    addresses: 'smtp.gmail.com'
+    port: 587,
+    domain: 'dcomp.ufs.br',
+    user_name: ENV["DATABASE_USER_NAME"],
+    password: ENV["DATABASE_PASSWORD_EMAIL"],
+    authentication: 'plain',
+    enable_starttls_auto: true
+  }
 end
