@@ -69,7 +69,7 @@ DeviseTokenAuth.setup do |config|
   # param is set, the API will redirect to this value when no value is provided 
   # by the client.
   config.default_confirm_success_url = if Rails.env.production?
-    'https://main.d2eabbnfag3653.amplifyapp.com/login'
+    'https://tarifas-api.onrender.com/login'
   else
     'http://localhost:3000/login'
   end
@@ -80,7 +80,7 @@ DeviseTokenAuth.setup do |config|
   # param is set, the API will redirect to this value when no value is provided
   # by thfe client.
   config.default_password_reset_url = if Rails.env.production?
-    'https://main.d2eabbnfag3653.amplifyapp.com/reset-password'
+    'https://tarifas-api.onrender.com/reset-password'
   else
     'http://localhost:3000/reset-password'
   end
