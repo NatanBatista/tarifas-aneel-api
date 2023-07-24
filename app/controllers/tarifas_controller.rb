@@ -1,5 +1,5 @@
 class TarifasController < ApplicationController
-  before_action :authenticate_user!
+
   def index
     render json: {ProgamaçãoWeb: "Api das tarifas aneel"}
   end
