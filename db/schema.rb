@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_07_22_181539) do
+ActiveRecord::Schema.define(version: 2023_07_21_131106) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,10 +23,16 @@ ActiveRecord::Schema.define(version: 2023_07_22_181539) do
     t.index ["nome"], name: "empresas_nome_key", unique: true
   end
 
+  create_table "jwt_denylist", force: :cascade do |t|
+    t.string "jti", null: false
+    t.datetime "exp", null: false
+    t.index ["jti"], name: "index_jwt_denylist_on_jti"
+  end
+
   create_table "modalidade_tarifaria", primary_key: "idmodalidade_tarifaria", id: { type: :string, limit: 40 }, force: :cascade do |t|
   end
 
-  create_table "subgrupos_tarifarios", primary_key: "idsubgrupos_tarifarios", id: { type: :string, limit: 15 }, force: :cascade do |t|
+  create_table "subgrupo_tarifarios", primary_key: "idsubgrupos_tarifarios", id: { type: :string, limit: 15 }, force: :cascade do |t|
   end
 
   create_table "tarifa_aplicacao", primary_key: "tarifa_aplicacao_base", id: { type: :string, limit: 30 }, force: :cascade do |t|
@@ -77,7 +83,6 @@ ActiveRecord::Schema.define(version: 2023_07_22_181539) do
     t.json "tokens"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "lastname"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -88,6 +93,6 @@ ActiveRecord::Schema.define(version: 2023_07_22_181539) do
   add_foreign_key "tarifas", "empresas", column: "numcnpjdistribuidora", primary_key: "cnpj", name: "fk_numcnpjdistribuidora", on_update: :cascade, on_delete: :cascade
   add_foreign_key "tarifas", "empresas", column: "sigagente", primary_key: "nome", name: "fk_sigagente", on_update: :cascade, on_delete: :cascade
   add_foreign_key "tarifas", "modalidade_tarifaria", column: "dscmodalidadetarifaria", primary_key: "idmodalidade_tarifaria", name: "fk_modalidade", on_update: :cascade, on_delete: :cascade
-  add_foreign_key "tarifas", "subgrupos_tarifarios", column: "descsubgrupo", primary_key: "idsubgrupos_tarifarios", name: "fk_subgrupo", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "tarifas", "subgrupo_tarifarios", column: "descsubgrupo", primary_key: "idsubgrupos_tarifarios", name: "fk_subgrupo", on_update: :cascade, on_delete: :cascade
   add_foreign_key "tarifas", "tarifa_aplicacao", column: "dscbasetarifa", primary_key: "tarifa_aplicacao_base", name: "fk_tarifa", on_update: :cascade, on_delete: :cascade
 end
