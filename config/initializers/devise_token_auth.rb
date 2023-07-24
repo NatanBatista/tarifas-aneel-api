@@ -68,22 +68,13 @@ DeviseTokenAuth.setup do |config|
   # knows where to redirect users after successful email confirmation. If this 
   # param is set, the API will redirect to this value when no value is provided 
   # by the client.
-  config.default_confirm_success_url = if Rails.env.production?
-    'https://main.d2eabbnfag3653.amplifyapp.com/login'
-  else
-    'http://localhost:3000/login'
-  end
-    
+  config.default_confirm_success_url = 'http://localhost:3000/'
 
   # By default this value is expected to be sent by the client so that the API
   # knows where to redirect users after successful password resets. If this
   # param is set, the API will redirect to this value when no value is provided
   # by thfe client.
-  config.default_password_reset_url = if Rails.env.production?
-    'https://main.d2eabbnfag3653.amplifyapp.com/reset-password'
-  else
-    'http://localhost:3000/reset-password'
-  end
+  config.default_password_reset_url = 'http://localhost:3000/'
 
   config.remove_tokens_after_password_reset = true
 end
