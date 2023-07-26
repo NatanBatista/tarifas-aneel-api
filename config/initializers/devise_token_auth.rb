@@ -65,9 +65,17 @@ DeviseTokenAuth.setup do |config|
   config.send_confirmation_email = true
 
 
-  config.default_confirm_success_url = 'localhost:3000/login'
+  config.default_confirm_success_url = if Rails.env.production?
+    'localhost:3000/signin'
+  else
+    'localhost:3000/signin'
+  end
 
-  config.default_password_reset_url = 'localhost:3000/reset-password'
+  config.default_password_reset_url = if Rails.env.production?
+    'localhost:3000/reset-password'
+  else
+    'localhost:3000/reset-password'
+  end
 
   config.remove_tokens_after_password_reset = true
 end

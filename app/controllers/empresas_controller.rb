@@ -1,6 +1,6 @@
 class EmpresasController < ApplicationController
   before_action :set_empresa, only: [:show] #:update, :destroy
-
+  before_action :authenticate_user!
   # GET /empresas
   def index
     @empresas = Empresa.all
