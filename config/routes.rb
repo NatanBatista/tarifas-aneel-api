@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :locations, only: [:index, :create]
   mount_devise_token_auth_for 'User', at: 'auth'
   root "tarifas#index"
   resources :empresas, only: [:index, :show]
