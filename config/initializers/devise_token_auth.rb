@@ -66,13 +66,13 @@ DeviseTokenAuth.setup do |config|
 
 
   config.default_confirm_success_url = if Rails.env.production?
-    'localhost:3000/signin'
+    'https://main.d2eabbnfag3653.amplifyapp.com/sign-in'
   else
-    'localhost:3000/signin'
+    ' '
   end
 
   config.default_password_reset_url = if Rails.env.production?
-    'localhost:3000/reset-password'
+    'https://main.d2eabbnfag3653.amplifyapp.com/reset-password'
   else
     'localhost:3000/reset-password'
   end
