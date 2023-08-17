@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_07_28_164118) do
+ActiveRecord::Schema.define(version: 2023_08_17_212150) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,15 +24,13 @@ ActiveRecord::Schema.define(version: 2023_07_28_164118) do
   end
 
   create_table "locations", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.string "city", null: false
-    t.string "region", null: false
-    t.string "country", null: false
+    t.string "city"
+    t.string "region"
+    t.string "country"
     t.string "latitude"
     t.string "longitude"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_locations_on_user_id"
   end
 
   create_table "modalidade_tarifaria", primary_key: "idmodalidade_tarifaria", id: { type: :string, limit: 40 }, force: :cascade do |t|
@@ -95,7 +93,6 @@ ActiveRecord::Schema.define(version: 2023_07_28_164118) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
-  add_foreign_key "locations", "users"
   add_foreign_key "tarifas", "dscunidade", column: "descunidade", primary_key: "dscunidade", name: "fk_unidade", on_update: :cascade, on_delete: :cascade
   add_foreign_key "tarifas", "empresas", column: "numcnpjdistribuidora", primary_key: "cnpj", name: "fk_numcnpjdistribuidora", on_update: :cascade, on_delete: :cascade
   add_foreign_key "tarifas", "empresas", column: "sigagente", primary_key: "nome", name: "fk_sigagente", on_update: :cascade, on_delete: :cascade

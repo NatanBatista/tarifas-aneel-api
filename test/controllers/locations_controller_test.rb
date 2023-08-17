@@ -12,7 +12,7 @@ class LocationsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create location" do
     assert_difference('Location.count') do
-      post locations_url, params: { location: { city: @location.city, country: @location.country, latitude: @location.latitude, longitude: @location.longitude, region: @location.region, user_id: @location.user_id } }, as: :json
+      post locations_url, params: { location: { city: @location.city, country: @location.country, latitude: @location.latitude, longitude: @location.longitude, region: @location.region } }, as: :json
     end
 
     assert_response 201
@@ -24,7 +24,7 @@ class LocationsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update location" do
-    patch location_url(@location), params: { location: { city: @location.city, country: @location.country, latitude: @location.latitude, longitude: @location.longitude, region: @location.region, user_id: @location.user_id } }, as: :json
+    patch location_url(@location), params: { location: { city: @location.city, country: @location.country, latitude: @location.latitude, longitude: @location.longitude, region: @location.region } }, as: :json
     assert_response 200
   end
 
