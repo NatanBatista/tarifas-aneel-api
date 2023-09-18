@@ -1,4 +1,5 @@
 class Tarifa < ApplicationRecord
+  paginates_per 100
   scope :selecionar_datas_cnpj, ->(inicio, fim) { 
     select(:numcnpjdistribuidora, :datiniciovigencia, :datfimvigencia)
     .where("datiniciovigencia >= ? AND datfimvigencia <= ?", inicio, fim)
@@ -14,12 +15,10 @@ class Tarifa < ApplicationRecord
       .group("DatGeracaoConjuntoDados, DscModalidadeTarifaria")
   }
 
-  scope :valorTarifaporDistribuidora, -> (offset_value = 0){ ## 5º Questão
+  scope :valorTarifaporDistribuidora, -> (){ ## 5º Questão
     select("NumCNPJDistribuidora, vlrtusd")
       .group("numcnpjdistribuidora, vlrtusd")
       .order("vlrtusd DESC")
-      .limit(100)
-      .offset(offset_value)
   }
 
   scope :numTarifasPorPosto, -> {  ## 6º questão
@@ -37,11 +36,9 @@ class Tarifa < ApplicationRecord
       .limit(10)
   }
 
-  scope :resolucoes, -> (offset_value = 0) { ## 9º Questão
+  scope :resolucoes, -> { ## 9º Questão
     select("DISTINCT DscResolucaoHomologatoria")
       .order("DscResolucaoHomologatoria")
-      .limit(100)
-      .offset(offset_value)
   }
 
   scope :agentes_e_tarifas, -> {  ## 10º Questão
