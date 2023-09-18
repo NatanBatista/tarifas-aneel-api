@@ -32,3 +32,5 @@ gem "dockerfile-rails", ">= 1.5", :group => :development
 
 gem "devise_token_auth", "~> 1.2"
 
+
+gem "kaminari", "~> 1.2"
