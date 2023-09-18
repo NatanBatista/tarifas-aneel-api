@@ -8,10 +8,14 @@ class TarifasController < ApplicationController
   def data_vigencia_cnpj
     inicio = params[:inicio]
     fim = params[:fim]
+    
+    @data_vigencia = Tarifa.selecionar_datas_cnpj(inicio, fim).page(params[:page])
+    total_pages = @data_vigencia.total_pages
 
-    @data_vigencia = Tarifa.selecionar_datas_cnpj(inicio, fim)
-
-    render json: @data_vigencia
+    render json: {
+      total_pages: total_pages,
+      data_vigencia: @data_vigencia
+    }
   end
 
   def get_descclasse
@@ -27,10 +31,13 @@ class TarifasController < ApplicationController
   end
 
   def get_valorTarifaporDistribuidora
-    offset_value = params[:offset].to_i
-    @valorTarifaporDistribuidora = Tarifa.valorTarifaporDistribuidora(offset_value)
+    @valorTarifaporDistribuidora = Tarifa.valorTarifaporDistribuidora.page(params[:page])
+    total_pages = @valorTarifaporDistribuidora.total_pages
 
-    render json: @valorTarifaporDistribuidora
+    render json: {
+      total_pages: total_pages,
+      valores: @valorTarifaporDistribuidora
+    }
   end
 
   def get_numTarifasPorPosto
@@ -46,15 +53,22 @@ class TarifasController < ApplicationController
   end
 
   def get_resolucao
-    offset_value = params[:offset].to_i
-    @resolucoes = Tarifa.resolucoes(offset_value)
+    @resolucoes = Tarifa.resolucoes.page(params[:page])
+    total_pages = @resolucoes.total_pages
 
-    render json: @resolucoes
+    render json: {
+      total_pages: total_pages,
+      resolucoes: @resolucoes
+    }
   end
 
   def get_agentes_e_tarifas
-    @agentes = Tarifa.agentes_e_tarifas
+    @agentes = Tarifa.agentes_e_tarifas.page(params[:page])
+    total_pages = @agentes.total_pages
 
-    render json: @agentes
+    render json: {
+      total_pages: total_pages,
+      agentes: @agentes
+    }
   end
 end

@@ -3,9 +3,13 @@ class EmpresasController < ApplicationController
   before_action :authenticate_user!
   # GET /empresas
   def index
-    @empresas = Empresa.all
+    @empresas = Empresa.page(params[:page])
+    total_pages = @empresas.total_pages
 
-    render json: @empresas
+    render json: {
+      total_pages: total_pages,
+      empresas: @empresas
+    }
   end
 
   # GET /empresas/1
